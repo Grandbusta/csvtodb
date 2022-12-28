@@ -5,11 +5,12 @@ import (
 	"fmt"
 	"os"
 	"reflect"
+	"strings"
 )
 
 type PolStruct struct {
-	Provider       string `cs:"provider"`
-	Policy_Numbers string `cs:"policy_numbers"`
+	Name   string `cs:"name"`
+	Number string `cs:"number"`
 }
 
 func main() {
@@ -40,10 +41,10 @@ func main() {
 
 	x := reflect.StructOf([]reflect.StructField{
 		{
-			Name: "Provider",
+			Name: strings.Title(titles[0]),
 			Type: reflect.TypeOf(""),
 		},
 	})
 	// g := reflect.New(x)
-	fmt.Println(titles, x.Field(0).Type)
+	fmt.Println(titles, x.Field(0).Name)
 }
