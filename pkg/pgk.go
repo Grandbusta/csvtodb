@@ -39,8 +39,6 @@ func readCSV(file string) (data [][]string, err error) {
 
 func getTitles(data [][]string) []string {
 	titles := []string{}
-	// t := reflect.TypeOf(PolStruct{})
-
 	for _, record := range data[0] {
 		titles = append(titles, record)
 	}
@@ -59,12 +57,15 @@ func buildStruct(titles []string) {
 		})
 	}
 	t := reflect.StructOf(structFields)
-
 	for i := 0; i < t.NumField(); i++ {
 		fmt.Println(t.Field(i).Tag.Lookup("cs"))
 		fmt.Println(t.Field(i).Name)
 	}
 	fmt.Println(titles)
+}
+
+func getColumnTypes([]string) {
+
 }
 
 func InsertData(c *Config) {
@@ -75,6 +76,6 @@ func InsertData(c *Config) {
 	fmt.Println(c.Match)
 
 	titles := getTitles(data)
-
+	getColumnTypes(data[1])
 	buildStruct(titles)
 }
