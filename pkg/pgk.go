@@ -45,7 +45,7 @@ func getTitles(data [][]string) []string {
 	return titles
 }
 
-func buildStruct(titles []string, val []string) {
+func buildStruct(titles []string, val []string) reflect.Type {
 	structFields := []reflect.StructField{}
 	for index, title := range titles {
 		tag := fmt.Sprintf("%s:\"%s\"", "csd", title)
@@ -61,7 +61,7 @@ func buildStruct(titles []string, val []string) {
 		fmt.Println(t.Field(i).Tag.Lookup("csd"))
 		fmt.Println(t.Field(i).Name, t.Field(i).Type)
 	}
-	fmt.Println(titles, t)
+	return t
 }
 
 func getColumnTypes(titles interface{}) {
@@ -73,8 +73,8 @@ func InsertData(c *Config) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(c.Match)
-
 	titles := getTitles(data)
-	buildStruct(titles, data[1])
+
+	s := buildStruct(titles, data[1])
+	fmt.Println(s)
 }
