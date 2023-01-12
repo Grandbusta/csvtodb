@@ -64,10 +64,6 @@ func buildStruct(titles []string, val []string) reflect.Type {
 	return t
 }
 
-func getColumnTypes(titles interface{}) {
-
-}
-
 func InsertData(c *Config) {
 	data, err := readCSV(c.File)
 	if err != nil {
