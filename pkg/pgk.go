@@ -67,6 +67,7 @@ func buildStruct(titles []string, val []string) reflect.Type {
 func InsertData(c *Config) {
 	data, err := readCSV(c.File)
 	if err != nil {
+
 		log.Fatal(err)
 	}
 	titles := getTitles(data)
