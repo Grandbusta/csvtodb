@@ -71,7 +71,6 @@ func InsertData(c *Config) {
 		log.Fatal(err)
 	}
 	titles := getTitles(data)
-
 	s := buildStruct(titles, data[1])
 	fmt.Println(s)
 }
